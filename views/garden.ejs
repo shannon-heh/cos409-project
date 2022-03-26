@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('partials/head'); %>
+  </head>
+  <body>
+    <h1>Garden page</h1>
+    <ul>
+      <% gifts.forEach(function(gift) { %>
+      <li>
+        <p><strong><%= gift.name %></strong> gives <%= gift.gift %></p>
+      </li>
+      <% }); %>
+    </ul>
+    <%- include('partials/scripts'); %>
+  </body>
+</html>

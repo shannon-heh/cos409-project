@@ -9,34 +9,33 @@ require("dotenv").config();
 const gifts = require("./gift.js");
 const Gift = gifts.Gift;
 
-// this path points to the views folder
-const views = path.join(__dirname + "/views");
+// use ejs template engine
+app.set("view engine", "ejs");
 
 // Home page
 app.get("/", async (req, res) => {
-  res.sendFile(`${views}/index.html`);
+  res.render("index");
 });
 
 // Workshop page
 app.get("/workshop", async (req, res) => {
-  res.sendFile(`${views}/workshop.html`);
+  res.render("workshop");
 });
 
 // Garden page
 app.get("/garden", async (req, res) => {
-  // const gifts = await Gift.getGifts();
-  // console.log("Gifts in DB: ", gifts);
-  res.sendFile(`${views}/garden.html`);
+  const gifts = await Gift.getGifts();
+  res.render("garden", { gifts: gifts });
 });
 
 // Final page
 app.get("/final", async (req, res) => {
-  res.sendFile(`${views}/final.html`);
+  res.render("final");
 });
 
 // About page
 app.get("/about", async (req, res) => {
-  res.sendFile(`${views}/about.html`);
+  res.render("about");
 });
 
 // Listens for client requests
