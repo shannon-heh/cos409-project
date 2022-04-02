@@ -42,6 +42,8 @@ Our dependencies (specified in `package-lock.json`) include...
 - `dotenv`: loads environment variables from `.env`
 - `ejs`: templating engine to generate HTML with JS
 - `express`: node.js framework to build APIs in JS
+- `jquery`: JS library that simplifies DOM traversal, event handling, requests
+- `bootstrap`: front-end framework that provides components to ease UI-building
 - `pg`: allows interfacing with PostgreSQL database
 - `nodemon`: auto-restarts node server when changes made to JS files in current directory
 
