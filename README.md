@@ -30,22 +30,27 @@ Visit **`localhost:PORT/`**. The `PORT` is specified in the console log.
 
 Now you're ready to make changes!
 
-### To install dependencies
+### Dependencies
+
+The following are dependencies specified in `package-lock.json`, installed using `npm`.
+
+- `dotenv`: loads environment variables from `.env`
+- `ejs`: templating engine to generate HTML with JS
+- `express`: node.js framework to build APIs in JS
+- `pg`: allows interfacing with PostgreSQL database
+- `nodemon`: auto-restarts node server when changes made to JS files in current directory
+
+**To install these dependencies and update your `package-lock.json`:**
 
 ```
 >> cd cos409-project
 >> npm install
 ```
 
-Our dependencies (specified in `package-lock.json`) include...
+The following dependencies are imported in our HTML files. No need to do extra installation steps.
 
-- `dotenv`: loads environment variables from `.env`
-- `ejs`: templating engine to generate HTML with JS
-- `express`: node.js framework to build APIs in JS
 - `jquery`: JS library that simplifies DOM traversal, event handling, requests
 - `bootstrap`: front-end framework that provides components to ease UI-building
-- `pg`: allows interfacing with PostgreSQL database
-- `nodemon`: auto-restarts node server when changes made to JS files in current directory
 
 ### Directory organization
 
