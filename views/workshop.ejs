@@ -1,10 +1,95 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%- include('partials/head'); %>
+    <%- include('partials/head'); %> <%- include('partials/scripts'); %>
   </head>
   <body>
     <h1>Workshop page</h1>
-    <%- include('partials/scripts'); %>
+
+    <!-- Click to open Cart modal (below) -->
+    <button id="cart-btn" type="button" class="btn btn-primary">
+      Show Cart
+    </button>
+
+    <!-- Customize gallery here -->
+    <div id="gallery-container">
+      <% for (category in allItems) { %>
+      <div><strong class="item-category"><%= category %></strong></div>
+      <% allItems[category].forEach(function(item) { %>
+      <div
+        class="item-container"
+        data-category="<%=category%>"
+        data-item="<%=item.title%>"
+      >
+        <div class="item-title"><%= item.title %></div>
+        <div class="item-description"><%=item.description%></div>
+        <div class="item-image"><%=item.image%></div>
+        <button
+          type="button"
+          class="buy-btn btn btn-primary"
+          data-category="<%=category%>"
+          data-item="<%=item.title%>"
+        >
+          Add to Cart
+        </button>
+      </div>
+      <% }); %> <% } %>
+    </div>
+
+    <!-- Cart Modal -->
+    <div
+      class="modal fade"
+      id="cart-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">My Cart</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div id="cart-body" class="modal-body">
+            <!-- By default, all items are added to Cart modal body. -->
+            <!-- In app.js, we hide any items not in cart. -->
+            <% for (category in allItems) { %> <%
+            allItems[category].forEach(function(item) { %>
+            <div
+              class="cart-item-container"
+              data-category="<%=category%>"
+              data-item="<%=item.title%>"
+            >
+              <div class="cart-item-title"><%= item.title %></div>
+              <div class="cart-item-category">Category: <%= category %></div>
+              <div class="cart-item-image"><%=item.image%></div>
+              <button
+                type="button"
+                class="remove-btn btn btn-primary"
+                data-category="<%=category%>"
+                data-item="<%=item.title%>"
+              >
+                Remove from Cart
+              </button>
+            </div>
+            <% }); %> <% } %>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

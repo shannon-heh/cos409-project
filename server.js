@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const fs = require("fs");
 
 // to read env variables in .env
 require("dotenv").config();
@@ -11,6 +12,7 @@ const Gift = gifts.Gift;
 
 // use ejs template engine
 app.set("view engine", "ejs");
+app.use(express.static("static"));
 
 // Home page
 app.get("/", async (req, res) => {
@@ -19,7 +21,9 @@ app.get("/", async (req, res) => {
 
 // Workshop page
 app.get("/workshop", async (req, res) => {
-  res.render("workshop");
+  // all items are stored in JSON file
+  const allItems = JSON.parse(fs.readFileSync("all-items.json", "utf8"));
+  res.render("workshop", { allItems: allItems });
 });
 
 // Garden page
