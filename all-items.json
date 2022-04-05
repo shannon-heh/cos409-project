@@ -1,0 +1,16 @@
+{
+  "Chips": [
+    {
+      "title": "Wood Chip",
+      "description": "It's biodegradable.",
+      "image": "here's an image"
+    }
+  ],
+  "Plant Computers": [
+    {
+      "title": "Plant sensor",
+      "description": "It's a plant.",
+      "image": "here's an image"
+    }
+  ]
+}
