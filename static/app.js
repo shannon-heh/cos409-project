@@ -76,9 +76,75 @@ function disableAddToCart() {
   });
 }
 
+// Controls auto-scroll down Garden page
+function scrollGifts() {
+  const btn = "#scroll-btn";
+  const garden = "#garden-wrapper";
+
+  // calculate distance to bottom of gifts
+  const distFromTop = $("#end-gifts").get(0).getBoundingClientRect().top;
+  // calculate number of gifts
+  const numGifts = $(".gift-card").length;
+
+  $(btn).on("click", function () {
+    if ($(garden).is(":animated")) {
+      // pause scroll
+      $(garden).stop();
+      $(btn).html("Resume");
+    } else {
+      // resume scroll
+      $(btn).html("Pause");
+      $(garden).animate(
+        {
+          scrollTop: distFromTop,
+        },
+        numGifts * 2000,
+        "linear"
+      );
+    }
+  });
+}
+
+// Adds player's gift to database
+function addGift() {
+  $("#add-gift-btn").on("click", function () {
+    const gift = $("#add-gift-input").val();
+
+    // don't accept empty inputs
+    if (gift.trim() == "") return;
+
+    // get player's name
+    let name = "Anonymous";
+    if ("name" in localStorage) {
+      name = localStorage.getItem("name");
+    }
+
+    // call express endpoint
+    const params = JSON.stringify({ name: name, gift: gift });
+    fetch("/add-gift", {
+      method: "POST",
+      body: params,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    // clear field
+    $("#add-gift-input").val("");
+  });
+}
+
+// Auto-start garden scroll
+function startGarden() {
+  $("#scroll-btn").trigger("click");
+}
+
 $(function () {
   addToCart();
   removeFromCart();
   showCart();
   disableAddToCart();
+  scrollGifts();
+  addGift();
+  startGarden();
 });

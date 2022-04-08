@@ -1,18 +1,17 @@
-const express = require("express");
+import express from "express";
 const app = express();
-const path = require("path");
-const fs = require("fs");
+import * as fs from "fs";
 
 // to read env variables in .env
-require("dotenv").config();
+import "dotenv/config";
 
 // to control gift queries
-const gifts = require("./gift.js");
-const Gift = gifts.Gift;
+import { Gift } from "./gift.js";
 
 // use ejs template engine
 app.set("view engine", "ejs");
 app.use(express.static("static"));
+app.use(express.json());
 
 // Home page
 app.get("/", async (req, res) => {
@@ -40,6 +39,13 @@ app.get("/final", async (req, res) => {
 // About page
 app.get("/about", async (req, res) => {
   res.render("about");
+});
+
+// Adds gift to DB
+app.post("/add-gift", async (req, res) => {
+  const { name, gift } = req.body;
+  const giftObj = new Gift(gift, name);
+  giftObj.addGift();
 });
 
 // Listens for client requests
