@@ -27,8 +27,18 @@ app.get("/workshop", async (req, res) => {
 
 // Garden page
 app.get("/garden", async (req, res) => {
-  // random gifts
+  // get all gifts
   const gifts = await Gift.getGifts();
+
+  // randomize gift order
+  let curr = gifts.length;
+  let rand = 0;
+  while (curr != 0) {
+    rand = Math.floor(Math.random() * curr);
+    curr--;
+    [gifts[curr], gifts[rand]] = [gifts[rand], gifts[curr]];
+  }
+
   res.render("garden", { gifts: gifts });
 });
 
