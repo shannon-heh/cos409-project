@@ -27,6 +27,7 @@ app.get("/workshop", async (req, res) => {
 
 // Garden page
 app.get("/garden", async (req, res) => {
+  // random gifts
   const gifts = await Gift.getGifts();
   res.render("garden", { gifts: gifts });
 });
@@ -45,7 +46,13 @@ app.get("/about", async (req, res) => {
 app.post("/add-gift", async (req, res) => {
   const { name, gift } = req.body;
   const giftObj = new Gift(gift, name);
-  giftObj.addGift();
+  const isSuccess = await giftObj.addGift();
+  if (isSuccess) {
+    res.status(200);
+  } else {
+    res.status(500);
+  }
+  return res.end();
 });
 
 // Listens for client requests

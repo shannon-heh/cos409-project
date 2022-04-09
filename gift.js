@@ -15,6 +15,7 @@ const pool = new Pool({
   },
 });
 
+// Create new gift object
 // Handles gift-related functions
 export class Gift {
   constructor(gift, name) {
@@ -22,17 +23,25 @@ export class Gift {
     this.name = name;
   }
 
-  // insert gift into DB
+  // insert gift into DB, returns 1 if successful and 0 if not
   // doesn't check for duplicates
-  addGift() {
+  async addGift() {
     const query = {
       text: "INSERT INTO  gifts (gift, name) VALUES($1, $2)",
       values: [this.gift, this.name],
     };
-    pool.connect().then((client) =>
-      client.query(query).then((data) => {
-        client.release();
-      })
+    return pool.connect().then((client) =>
+      client
+        .query(query)
+        .then((data) => {
+          client.release();
+          return 1;
+        })
+        .catch((error) => {
+          client.release();
+          console.log("ERROR:", error);
+          return 0;
+        })
     );
   }
 
