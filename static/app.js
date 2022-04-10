@@ -76,9 +76,99 @@ function disableAddToCart() {
   });
 }
 
+// Controls auto-scroll down Garden page
+function scrollGifts() {
+  const btn = "#scroll-btn";
+  const garden = "#garden-wrapper";
+
+  // calculate distance to bottom of gifts
+  const distFromTop = $("#end-gifts").get(0).getBoundingClientRect().top;
+  // calculate number of gifts
+  const numGifts = $(".gift-card").length;
+
+  $(btn).on("click", function () {
+    if ($(garden).is(":animated")) {
+      // pause scroll
+      $(garden).stop();
+      $(btn).html("Resume");
+    } else {
+      // resume scroll
+      $(btn).html("Pause");
+      $(garden).animate(
+        {
+          scrollTop: distFromTop,
+        },
+        numGifts * 2000,
+        "linear"
+      );
+    }
+  });
+}
+
+// Adds player's gift to database
+function addGift() {
+  $("#give-gift-btn").on("click", function () {
+    const gift = $("#give-gift-input").val();
+
+    const toastText = "#gift-toast .toast-text";
+
+    // don't accept empty inputs
+    if (gift.trim() == "") {
+      $(toastText).html("Please give a non-empty gift.");
+      const toastEl = new bootstrap.Toast($("#gift-toast"));
+      toastEl.show();
+      return;
+    }
+
+    // get player's name
+    let name = "Anonymous";
+    if ("name" in localStorage) {
+      name = localStorage.getItem("name");
+    }
+
+    // call express endpoint
+    const params = JSON.stringify({ name: name, gift: gift });
+    fetch("/add-gift", {
+      method: "POST",
+      body: params,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => {
+      // handle errors in adding gift
+      if (res.status == 200) {
+        $(toastText).html("Your gift is in the garden!");
+      } else {
+        $(toastText).html(
+          "Oops! Your gift was not added to the garden. Please try again."
+        );
+      }
+      const toastEl = new bootstrap.Toast($("#gift-toast"));
+      toastEl.show();
+    });
+
+    // clear field
+    $("#give-gift-input").val("");
+
+    // disable button for 10s to prevent spamming
+    $("#give-gift-btn").attr("disabled", true);
+    setTimeout(function () {
+      $("#give-gift-btn").attr("disabled", false);
+    }, 10000);
+  });
+}
+
+// Auto-start garden scroll
+function startGarden() {
+  $("#scroll-btn").trigger("click");
+}
+
 $(function () {
   addToCart();
   removeFromCart();
   showCart();
   disableAddToCart();
+  scrollGifts();
+  addGift();
+  startGarden();
 });

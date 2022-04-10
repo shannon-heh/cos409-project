@@ -1,0 +1,57 @@
+html,
+body {
+  overflow: hidden;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* GARDEN PAGE */
+#garden-wrapper {
+  height: 100%;
+  overflow: auto;
+}
+
+#scroll-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+#garden-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 70px;
+}
+
+.gift-card {
+  width: 80%;
+}
+
+.gift-card .card-body p {
+  margin: 0;
+}
+
+#give-gift-wrapper {
+  position: absolute;
+  bottom: 10px;
+  width: 50%;
+}
+
+#gift-toast-container {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+}
+
+#gift-toast,
+#gift-toast .toast-header {
+  background-color: #97c95c;
+}
+
+#gift-toast .toast-header p {
+  color: black;
+  margin: auto;
+}

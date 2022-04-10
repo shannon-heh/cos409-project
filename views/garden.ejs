@@ -4,14 +4,65 @@
     <%- include('partials/head'); %>
   </head>
   <body>
-    <h1>Garden page</h1>
-    <ul>
-      <% gifts.forEach(function(gift) { %>
-      <li>
-        <p><strong><%= gift.name %></strong> gives <%= gift.gift %></p>
-      </li>
-      <% }); %>
-    </ul>
+    <div id="garden-wrapper">
+      <center><h1>The Garden</h1></center>
+      <button id="scroll-btn" type="button" class="btn btn-primary">
+        Start Scroll
+      </button>
+      <div class="container">
+        <div class="row" style="width: 100%; text-align: center">
+          <div class="col-2"></div>
+          <div class="col-8" id="gifts-col">
+            <div id="garden-container" style="width: 100%">
+              <% gifts.forEach(function(gift) { %>
+              <div class="card gift-card my-2">
+                <div class="card-body">
+                  <p><%= gift.gift %></p>
+                  <p class="fst-italic"><%= gift.name %></p>
+                </div>
+              </div>
+              <% }); %>
+              <div id="end-gifts"></div>
+              <div id="give-gift-wrapper" class="input-group mb-3">
+                <input
+                  id="give-gift-input"
+                  type="text"
+                  class="form-control"
+                  placeholder="Give a gift!"
+                  aria-label="Give a gift!"
+                  aria-describedby="basic-addon1"
+                />
+                <div class="input-group-append">
+                  <button
+                    id="give-gift-btn"
+                    class="btn btn-primary"
+                    type="button"
+                  >
+                    Give Gift
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-2"></div>
+        </div>
+      </div>
+
+      <div id="gift-toast-container" class="toast-container">
+        <div
+          id="gift-toast"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+          class="toast"
+        >
+          <div class="toast-header">
+            <p class="toast-text mr-auto"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <%- include('partials/scripts'); %>
   </body>
 </html>
