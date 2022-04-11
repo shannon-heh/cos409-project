@@ -1,4 +1,51 @@
-// Return cart as array from local storage
+// Restarts game by clearing their data
+function restartGame() {
+  $("#restart-btn").on("click", function () {
+    localStorage.clear();
+    window.location.replace("/");
+  });
+}
+
+// Home page if user has played before
+function setWelcome() {
+  if ("username" in localStorage) {
+    $("#username-form").css("display", "none");
+    $("#home-welcome").html(`Welcome ${localStorage.getItem("username")}!`);
+    $("#restart-btn").css("display", "block");
+  }
+}
+
+// Set user's name
+function setName() {
+  $("#username-btn").on("click", function () {
+    const username = $("#username-input").val();
+    // restrict username length
+    if (username.length > 100 || username.length <= 0) {
+      $("#username-error").html(
+        "Enter a non-empty string with fewer than 100 characters"
+      );
+      return;
+    }
+
+    // restrist username characters
+    const regex = new RegExp(/^[a-zA-Z0-9._!?@*$#-]+$/i);
+    if (!regex.test(username)) {
+      $("#username-error").html(
+        "Only enter characters 0-9, a-z, A-Z, ._-!?@*$#"
+      );
+      return;
+    }
+    $("#username-error").html("");
+
+    // set username
+    localStorage.setItem("username", username);
+
+    // redirect to workshop page
+    window.location.replace("/workshop");
+  });
+}
+
+// Helper method: return cart as array from local storage
 function getCart() {
   if (!("cart" in localStorage)) {
     return [];
@@ -6,7 +53,7 @@ function getCart() {
   return JSON.parse(localStorage.getItem("cart"));
 }
 
-// Set cart in local storage given cart array
+// Helper method: ste cart in local storage given cart array
 function setCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
@@ -164,11 +211,23 @@ function startGarden() {
 }
 
 $(function () {
-  addToCart();
-  removeFromCart();
-  showCart();
-  disableAddToCart();
-  scrollGifts();
-  addGift();
-  startGarden();
+  if ($("body").hasClass("home")) {
+    // Home page
+    setWelcome();
+    setName();
+    restartGame();
+  }
+  if ($("body").hasClass("workshop")) {
+    // Workshop page
+    addToCart();
+    removeFromCart();
+    showCart();
+    disableAddToCart();
+  }
+  if ($("body").hasClass("garden")) {
+    // Garden page
+    scrollGifts();
+    addGift();
+    startGarden();
+  }
 });
