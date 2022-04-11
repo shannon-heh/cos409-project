@@ -45,7 +45,7 @@ function setName() {
   });
 }
 
-// Return cart as array from local storage
+// Helper method: return cart as array from local storage
 function getCart() {
   if (!("cart" in localStorage)) {
     return [];
@@ -53,7 +53,7 @@ function getCart() {
   return JSON.parse(localStorage.getItem("cart"));
 }
 
-// Set cart in local storage given cart array
+// Helper method: ste cart in local storage given cart array
 function setCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
@@ -211,14 +211,23 @@ function startGarden() {
 }
 
 $(function () {
-  setWelcome();
-  setName();
-  restartGame();
-  addToCart();
-  removeFromCart();
-  showCart();
-  disableAddToCart();
-  scrollGifts();
-  addGift();
-  startGarden();
+  if ($("body").hasClass("home")) {
+    // Home page
+    setWelcome();
+    setName();
+    restartGame();
+  }
+  if ($("body").hasClass("workshop")) {
+    // Workshop page
+    addToCart();
+    removeFromCart();
+    showCart();
+    disableAddToCart();
+  }
+  if ($("body").hasClass("garden")) {
+    // Garden page
+    scrollGifts();
+    addGift();
+    startGarden();
+  }
 });
