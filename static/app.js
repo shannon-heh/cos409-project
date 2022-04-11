@@ -2,14 +2,29 @@
 function setName() {
   $("#username-btn").on("click", function () {
     const username = $("#username-input").val();
-    const regex = new RegExp(/^[a-z0-9._-]+$/i);
-    if (!regex.test(username)) {
+    // restrict username length
+    if (username.length > 100 || username.length <= 0) {
       $("#username-error").html(
-        "Enter a non-empty string with characters 0-9, a-z, A-Z, ., -, _"
+        "Enter a non-empty string with fewer than 100 characters"
       );
       return;
     }
+
+    // restrist username characters
+    const regex = new RegExp(/^[a-zA-Z0-9._!?@*$#-]+$/i);
+    if (!regex.test(username)) {
+      $("#username-error").html(
+        "Only enter characters 0-9, a-z, A-Z, ._-!?@*$#"
+      );
+      return;
+    }
+    $("#username-error").html("");
+
+    // set username
     localStorage.setItem("username", username);
+
+    // redirect to workshop page
+    window.location.replace("/workshop");
   });
 }
 
