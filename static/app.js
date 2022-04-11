@@ -1,3 +1,20 @@
+// Restarts game by clearing their data
+function restartGame() {
+  $("#restart-btn").on("click", function () {
+    localStorage.clear();
+    window.location.replace("/");
+  });
+}
+
+// Home page if user has played before
+function setWelcome() {
+  if ("username" in localStorage) {
+    $("#username-form").css("display", "none");
+    $("#home-welcome").html(`Welcome ${localStorage.getItem("username")}!`);
+    $("#restart-btn").css("display", "block");
+  }
+}
+
 // Set user's name
 function setName() {
   $("#username-btn").on("click", function () {
@@ -194,7 +211,9 @@ function startGarden() {
 }
 
 $(function () {
+  setWelcome();
   setName();
+  restartGame();
   addToCart();
   removeFromCart();
   showCart();
