@@ -1,3 +1,18 @@
+// Set user's name
+function setName() {
+  $("#username-btn").on("click", function () {
+    const username = $("#username-input").val();
+    const regex = new RegExp(/^[a-z0-9._-]+$/i);
+    if (!regex.test(username)) {
+      $("#username-error").html(
+        "Enter a non-empty string with characters 0-9, a-z, A-Z, ., -, _"
+      );
+      return;
+    }
+    localStorage.setItem("username", username);
+  });
+}
+
 // Return cart as array from local storage
 function getCart() {
   if (!("cart" in localStorage)) {
@@ -164,6 +179,7 @@ function startGarden() {
 }
 
 $(function () {
+  setName();
   addToCart();
   removeFromCart();
   showCart();

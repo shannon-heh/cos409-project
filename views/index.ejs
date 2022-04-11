@@ -4,7 +4,23 @@
     <%- include('partials/head'); %>
   </head>
   <body>
-    <h1>Home page</h1>
+    <div id="home-container">
+      <h1 style="color: rgb(43, 130, 19)">Welcome!</h1>
+      <div id="username-input-group" class="input-group mb-3">
+        <input
+          type="username"
+          class="form-control"
+          id="username-input"
+          placeholder="Enter a username"
+        />
+        <div class="input-group-append">
+          <button id="username-btn" class="btn btn-primary" type="button">
+            Submit
+          </button>
+        </div>
+        <div id="username-error" class="form-text"></div>
+      </div>
+    </div>
     <%- include('partials/scripts'); %>
   </body>
 </html>
