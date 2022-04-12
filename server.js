@@ -11,6 +11,7 @@ import { Gift } from "./gift.js";
 // use ejs template engine
 app.set("view engine", "ejs");
 app.use(express.static("static"));
+app.use(express.static('static/images'))
 app.use(express.json());
 
 // Home page
