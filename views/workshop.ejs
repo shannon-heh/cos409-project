@@ -5,9 +5,10 @@
   </head>
   <style>
     body {
-      background-image: url("Workshop.png");
-      background-repeat: no-repeat;
-      background-attachment: fixed;
+      background: url("Workshop.png") no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
       background-size: cover;
     }
   </style>
@@ -17,31 +18,20 @@
       <div class="container-fluid" id="gallery-container">
         <% for (category in allItems) { %> <%
         allItems[category].forEach(function(item) { %>
-        <div class="item-drop drag-drop">
-          <div
-            class="item-container"
-            data-category="<%=category%>"
-            data-item="<%=item.title%>"
-          >
-            <div class="item-title"><%= category %></div>
-            <!-- <div class="item-title"><%= item.title %></div> -->
-            <!-- <div class="item-description"><%=item.description%></div> -->
-            <img
-              class="item-image"
-              height="100"
-              width="100"
-              src="<%= item.image %>"
-            />
-            <!-- <button
-          padding=""
-          type="button"
-          class="buy-btn btn btn-primary"
+        <div
+          class="item-container item-drop drag-drop"
           data-category="<%=category%>"
           data-item="<%=item.title%>"
         >
-          Add to Cart
-        </button> -->
-          </div>
+          <div class="item-title"><%= category %></div>
+          <!-- <div class="item-title"><%= item.title %></div> -->
+          <!-- <div class="item-description"><%=item.description%></div> -->
+          <img
+            class="item-image"
+            height="100"
+            width="100"
+            src="<%= item.image %>"
+          />
         </div>
         <% }); %> <% } %>
       </div>
@@ -51,69 +41,8 @@
     </div>
 
     <!-- Click to open Cart modal (below) -->
-    <!-- <button id="cart-btn" type="button" class="btn btn-primary">
+    <button id="cart-btn" type="button" class="btn btn-primary">
       Show Cart
-    </button> -->
-
-    <!-- Cart Modal -->
-    <!-- <div
-      class="modal fade"
-      id="cart-modal"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">My Cart</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div id="cart-body" class="modal-body"> -->
-    <!-- By default, all items are added to Cart modal body. -->
-    <!-- In app.js, we hide any items not in cart. -->
-    <!-- <% for (category in allItems) { %> <%
-            allItems[category].forEach(function(item) { %>
-            <div
-              class="cart-item-container"
-              data-category="<%=category%>"
-              data-item="<%=item.title%>"
-            >
-              <div class="cart-item-title"><%= item.title %></div>
-              <div class="cart-item-category">Category: <%= category %></div>
-              <img
-                class="item-image"
-                height="324"
-                width="324"
-                src="<%= item.image %>"
-              />
-              <button
-                type="button"
-                class="remove-btn btn btn-primary"
-                data-category="<%=category%>"
-                data-item="<%=item.title%>"
-              >
-                Remove from Cart
-              </button>
-            </div>
-            <% }); %> <% } %>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      </div>
-    </div> -->
+    </button>
   </body>
 </html>

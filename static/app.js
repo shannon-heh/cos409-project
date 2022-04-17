@@ -61,66 +61,36 @@ function setCart(cart) {
 // Adds an item to user's cart
 // Assumes cart is stored as list of items
 // Assumes user cannot add an item more than once
-function addToCart() {
-  $(".buy-btn").on("click", function () {
-    const item = $(this).attr("data-item");
+function addToCart(target) {
+  const item = target.getAttribute("data-item");
 
-    const cart = getCart();
-    cart.push(item);
-    setCart(cart);
+  const cart = getCart();
+  // do not add duplicate items
+  if (cart.includes(item)) return;
+  cart.push(item);
+  setCart(cart);
 
-    // disable button, change text
-    $(this).attr("disabled", true);
-    $(this).html("Added");
-  });
+  // disable button, change text
+  $(this).attr("disabled", true);
+  $(this).html("Added");
 }
 
 // Remove item from cart
-function removeFromCart() {
-  $(".remove-btn").on("click", function () {
-    const itemToRemove = $(this).attr("data-item");
+function removeFromCart(target) {
+  const itemToRemove = target.getAttribute("data-item");
 
-    const cart = getCart();
-    setCart(
-      cart.filter((item) => {
-        return item != itemToRemove;
-      })
-    );
+  const cart = getCart();
+  setCart(
+    cart.filter((item) => {
+      return item != itemToRemove;
+    })
+  );
 
-    // hide item from cart pop-up and enable Add to Cart button
-    $(this).parent(".cart-item-container").attr("hidden", true);
-    const btnSelector = `.buy-btn[data-item="${itemToRemove}"]`;
-    $(btnSelector).attr("disabled", false);
-    $(btnSelector).html("Add to Cart");
-  });
-}
-
-// Show cart as pop-up
-function showCart() {
-  $("#cart-btn").on("click", function () {
-    const cart = getCart();
-
-    // hide items that aren't in cart
-    $(".cart-item-container").each(function () {
-      const item = $(this).attr("data-item");
-      $(this).attr("hidden", !cart.includes(item));
-    });
-
-    // show cart items in pop-up
-    $("#cart-modal").modal("show");
-  });
-}
-
-// Disable Add to Cart button for any items already in cart
-function disableAddToCart() {
-  $(".buy-btn").each(function () {
-    const cart = getCart();
-    const item = $(this).attr("data-item");
-    if (cart.includes(item)) {
-      $(this).attr("disabled", true);
-      $(this).html("Added");
-    }
-  });
+  // hide item from cart pop-up and enable Add to Cart button
+  $(this).parent(".cart-item-container").attr("hidden", true);
+  const btnSelector = `.buy-btn[data-item="${itemToRemove}"]`;
+  $(btnSelector).attr("disabled", false);
+  $(btnSelector).html("Add to Cart");
 }
 
 // Controls auto-scroll down Garden page
@@ -217,13 +187,6 @@ $(function () {
     setName();
     restartGame();
   }
-  if ($("body").hasClass("workshop")) {
-    // Workshop page
-    addToCart();
-    removeFromCart();
-    showCart();
-    disableAddToCart();
-  }
   if ($("body").hasClass("garden")) {
     // Garden page
     scrollGifts();
@@ -231,3 +194,5 @@ $(function () {
     startGarden();
   }
 });
+
+export { addToCart, removeFromCart };

@@ -1,4 +1,5 @@
 import interact from "https://cdn.interactjs.io/v1.10.11/interactjs/index.js";
+import { addToCart, removeFromCart } from "./app.js";
 
 interact(".draggable").draggable({
   // enable inertial throwing
@@ -59,38 +60,28 @@ interact(".dropzone").dropzone({
   overlap: 0.75,
 
   // listen for drop related events:
-
   ondropactivate: function (event) {
     // add active dropzone feedback
-    console.log("drop activatee");
     event.target.classList.add("drop-active");
   },
   ondragenter: function (event) {
-    console.log("drag enter");
-    event.preventDefault();
-
     var draggableElement = event.relatedTarget;
     var dropzoneElement = event.target;
 
     // feedback the possibility of a drop
     dropzoneElement.classList.add("drop-target");
     draggableElement.classList.add("can-drop");
-    // draggableElement.textContent = "Dragged in";
   },
   ondragleave: function (event) {
-    console.log("drag leave");
+    removeFromCart(event.relatedTarget);
     // remove the drop feedback style
     event.target.classList.remove("drop-target");
     event.relatedTarget.classList.remove("can-drop");
-    // event.relatedTarget.textContent = "Dragged out";
   },
   ondrop: function (event) {
-    console.log("drop");
-    // event.relatedTarget.textContent = "Dropped";
+    addToCart(event.relatedTarget);
   },
   ondropdeactivate: function (event) {
-    console.log("drop deactivate");
-
     // remove active dropzone feedback
     event.target.classList.remove("drop-active");
     event.target.classList.remove("drop-target");

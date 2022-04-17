@@ -6,18 +6,6 @@ body {
   margin: 0;
 }
 
-#gallery-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-
-.item-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 /* GARDEN PAGE */
 #garden-wrapper {
   height: 100%;
@@ -85,6 +73,7 @@ body {
 }
 
 /* DRAGGABLE STYLING HERE */
+
 #workshop-container {
   display: flex;
   flex-direction: column;
@@ -93,9 +82,22 @@ body {
   height: 100%;
 }
 
+#gallery-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.item-container.item-drop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 #workshop-table {
-  height: 50%;
-  width: 50%;
+  height: 60%;
+  width: 700px;
 }
 
 .dropzone {
