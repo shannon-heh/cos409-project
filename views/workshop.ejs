@@ -23,8 +23,14 @@
       >
         <div class="item-title"><%= item.title %></div>
         <div class="item-description"><%=item.description%></div>
-        <div class="item-image"><%=item.image%></div>
+        <img
+          class="item-image"
+          height="324"
+          width="324"
+          src="<%= item.image %>"
+        />
         <button
+          padding=""
           type="button"
           class="buy-btn btn btn-primary"
           data-category="<%=category%>"
@@ -67,7 +73,12 @@
             >
               <div class="cart-item-title"><%= item.title %></div>
               <div class="cart-item-category">Category: <%= category %></div>
-              <div class="cart-item-image"><%=item.image%></div>
+              <img
+                class="item-image"
+                height="324"
+                width="324"
+                src="<%= item.image %>"
+              />
               <button
                 type="button"
                 class="remove-btn btn btn-primary"
