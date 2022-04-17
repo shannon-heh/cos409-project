@@ -50,12 +50,16 @@
           </div>
           <div class="modal-body modal-container" data-category="<%=category%>">
             <!-- Image for this category -->
-            <img height="300" src="<%= allItems[category].image %>" />
+            <img
+              height="300"
+              style="margin-right: 10px"
+              src="<%= allItems[category].image %>"
+            />
 
             <!-- Container for items in this category -->
             <div class="items-modal-container">
               <!-- Buttons to select item -->
-              <div class="btn-group" role="group">
+              <div class="btn-group" role="group" style="margin-bottom: 10px">
                 <% allItems[category].items.forEach(function(item) { %>
                 <button
                   type="button"
@@ -71,7 +75,9 @@
               <!-- Show text for each item -->
               <% allItems[category].items.forEach(function(item) { %>
               <div class="item-modal-text" data-item="<%=item.title%>">
-                <div class="item-modal-title"><%= item.title %></div>
+                <div class="item-modal-title">
+                  <strong><%= item.title %></strong>
+                </div>
                 <div class="item-modal-desc"><%= item.description %></div>
               </div>
               <% }); %>

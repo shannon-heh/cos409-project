@@ -95,6 +95,11 @@ body {
   justify-content: center;
 }
 
+.modal-container {
+  display: flex;
+  flex-direction: row;
+}
+
 #workshop-table {
   height: 60%;
   width: 700px;
