@@ -165,10 +165,14 @@ function startGarden() {
 // Defaults to showing first iteme
 function showCategory() {
   $(".category-container").on("click", function () {
-    const selectedCategory = $(this).attr("data-category");
+    // do not trigger click event on drag
+    if ($(this).hasClass("noclick")) {
+      $(this).removeClass("noclick");
+      return;
+    }
 
-    // parent modal
-    const modal = `[id='${selectedCategory}-modal']`;
+    const selectedCategory = $(this).attr("data-category");
+    const modal = `[id='${selectedCategory}-modal']`; // parent modal
 
     // set first item as active if none are active
     if ($(`${modal} .item-modal-btn.active`).length == 0) {
@@ -251,4 +255,4 @@ $(function () {
   // TO-DO: ADD LISTENER, CLEAR ON RELOAD
 });
 
-export { addToCart, removeFromCart };
+export { addToCart, removeFromCart, showCategory };

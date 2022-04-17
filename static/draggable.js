@@ -1,5 +1,5 @@
 import interact from "https://cdn.interactjs.io/v1.10.11/interactjs/index.js";
-import { addToCart, removeFromCart } from "./app.js";
+import { addToCart, removeFromCart, showCategory } from "./app.js";
 
 interact(".draggable").draggable({
   // enable inertial throwing
@@ -61,6 +61,8 @@ interact(".dropzone").dropzone({
 
   // listen for drop related events:
   ondropactivate: function (event) {
+    // do not trigger click event on drag
+    $(".category-container").addClass("noclick");
     // add active dropzone feedback
     event.target.classList.add("drop-active");
   },
