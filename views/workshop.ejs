@@ -14,35 +14,82 @@
   </style>
   <body class="workshop">
     <div id="workshop-container">
-      <!-- Customize gallery here -->
       <div class="container-fluid" id="gallery-container">
-        <% for (category in allItems) { %> <%
-        allItems[category].forEach(function(item) { %>
-        <div
-          class="item-container item-drop drag-drop"
-          data-category="<%=category%>"
-          data-item="<%=item.title%>"
-        >
-          <div class="item-title"><%= category %></div>
-          <!-- <div class="item-title"><%= item.title %></div> -->
-          <!-- <div class="item-description"><%=item.description%></div> -->
-          <img
-            class="item-image"
-            height="100"
-            width="100"
-            src="<%= item.image %>"
-          />
+        <% for (category in allItems) { %>
+        <div class="category-container drag-drop" data-category="<%=category%>">
+          <div><strong><%= category %></strong></div>
+          <div class="item-choice">
+            <%= allItems[category].items[0].title %>
+          </div>
+          <img height="120" src="<%= allItems[category].image %>" />
         </div>
-        <% }); %> <% } %>
+        <% } %>
       </div>
 
-      <!-- <div id="yes-drop" class="drag-drop">#yes-drop</div> -->
       <div id="workshop-table" class="dropzone"></div>
     </div>
 
-    <!-- Click to open Cart modal (below) -->
-    <button id="cart-btn" type="button" class="btn btn-primary">
-      Show Cart
-    </button>
+    <!-- Modal for each category -->
+    <% for (category in allItems) { %>
+    <div
+      class="modal fade"
+      id="<%=category%>-modal"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><%=category%></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body modal-container" data-category="<%=category%>">
+            <!-- Image for this category -->
+            <img height="300" src="<%= allItems[category].image %>" />
+
+            <!-- Container for items in this category -->
+            <div class="items-modal-container">
+              <!-- Buttons to select item -->
+              <div class="btn-group" role="group">
+                <% allItems[category].items.forEach(function(item) { %>
+                <button
+                  type="button"
+                  class="item-modal-btn btn btn-outline-primary"
+                  data-item="<%=item.title%>"
+                  data-category="<%=category%>"
+                >
+                  <%=item.title%>
+                </button>
+                <% }); %>
+              </div>
+
+              <!-- Show text for each item -->
+              <% allItems[category].items.forEach(function(item) { %>
+              <div class="item-modal-text" data-item="<%=item.title%>">
+                <div class="item-modal-title"><%= item.title %></div>
+                <div class="item-modal-desc"><%= item.description %></div>
+              </div>
+              <% }); %>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary modal-done-btn"
+              data-bs-dismiss="modal"
+              data-category="<%=category%>"
+            >
+              Done
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% } %>
   </body>
 </html>

@@ -55,7 +55,7 @@ window.dragMoveListener = dragMoveListener;
 // enable draggables to be dropped into this
 interact(".dropzone").dropzone({
   // only accept elements matching this CSS selector
-  accept: ".item-drop",
+  accept: ".category-container.drag-drop",
   // Require a 75% element overlap for a drop to be possible
   overlap: 0.75,
 
@@ -73,13 +73,20 @@ interact(".dropzone").dropzone({
     draggableElement.classList.add("can-drop");
   },
   ondragleave: function (event) {
-    removeFromCart(event.relatedTarget);
+    const category = event.relatedTarget.getAttribute("data-category");
+    removeFromCart(category);
+
     // remove the drop feedback style
     event.target.classList.remove("drop-target");
     event.relatedTarget.classList.remove("can-drop");
   },
   ondrop: function (event) {
-    addToCart(event.relatedTarget);
+    const category = event.relatedTarget.getAttribute("data-category");
+    const item = event.relatedTarget
+      .querySelector(".item-choice")
+      .innerHTML.trim();
+
+    addToCart(category, item);
   },
   ondropdeactivate: function (event) {
     // remove active dropzone feedback

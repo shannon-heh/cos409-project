@@ -48,7 +48,7 @@ function setName() {
 // Helper method: return cart as array from local storage
 function getCart() {
   if (!("cart" in localStorage)) {
-    return [];
+    return {};
   }
   return JSON.parse(localStorage.getItem("cart"));
 }
@@ -59,38 +59,19 @@ function setCart(cart) {
 }
 
 // Adds an item to user's cart
-// Assumes cart is stored as list of items
+// Assumes cart is stored as object: key = category, value = item
 // Assumes user cannot add an item more than once
-function addToCart(target) {
-  const item = target.getAttribute("data-item");
-
+function addToCart(category, item) {
   const cart = getCart();
-  // do not add duplicate items
-  if (cart.includes(item)) return;
-  cart.push(item);
+  cart[category] = item;
   setCart(cart);
-
-  // disable button, change text
-  $(this).attr("disabled", true);
-  $(this).html("Added");
 }
 
 // Remove item from cart
-function removeFromCart(target) {
-  const itemToRemove = target.getAttribute("data-item");
-
+function removeFromCart(category) {
   const cart = getCart();
-  setCart(
-    cart.filter((item) => {
-      return item != itemToRemove;
-    })
-  );
-
-  // hide item from cart pop-up and enable Add to Cart button
-  $(this).parent(".cart-item-container").attr("hidden", true);
-  const btnSelector = `.buy-btn[data-item="${itemToRemove}"]`;
-  $(btnSelector).attr("disabled", false);
-  $(btnSelector).html("Add to Cart");
+  delete cart[category];
+  setCart(cart);
 }
 
 // Controls auto-scroll down Garden page
@@ -180,6 +161,75 @@ function startGarden() {
   $("#scroll-btn").trigger("click");
 }
 
+// Open category modal
+// Defaults to showing first iteme
+function showCategory() {
+  $(".category-container").on("click", function () {
+    const selectedCategory = $(this).attr("data-category");
+
+    // parent modal
+    const modal = `[id='${selectedCategory}-modal']`;
+
+    // set first item as active if none are active
+    if ($(`${modal} .item-modal-btn.active`).length == 0) {
+      $(`${modal} .item-modal-btn`).first().addClass("active");
+      let count = 0;
+      $(`${modal} .item-modal-text`).each(function () {
+        $(this).attr("hidden", count > 0);
+        count += 1;
+      });
+    }
+
+    $(modal).modal("show");
+  });
+}
+
+// Show description for selected item
+function showItem() {
+  $(".item-modal-btn").on("click", function () {
+    const selectedItem = $(this).attr("data-item");
+    const category = $(this).attr("data-category");
+    const categoryId = `.modal-container[data-category='${category}']`;
+
+    // hide text for other items
+    $(`${categoryId} .item-modal-text`).each(function () {
+      const item = $(this).attr("data-item");
+      $(this).attr("hidden", selectedItem != item);
+    });
+
+    // set selected button as active
+    $(`${categoryId} .item-modal-btn`).each(function () {
+      const item = $(this).attr("data-item");
+      if (selectedItem == item) {
+        $(this).addClass("active");
+      } else {
+        $(this).removeClass("active");
+      }
+    });
+  });
+}
+
+// Selects item using Done button on category modal
+function chooseItem() {
+  $(".modal-done-btn").on("click", function () {
+    const category = $(this).attr("data-category");
+    const categoryId = `[data-category='${category}']`;
+
+    // get selected item
+    const selectedItem = $(
+      `.modal-container${categoryId} .item-modal-btn.active`
+    ).attr("data-item");
+
+    // set label
+    $(`.category-container${categoryId} .item-choice`).html(selectedItem);
+
+    // only add to cart if it's on the table
+    if ($(`.category-container${categoryId}`).hasClass("can-drop")) {
+      addToCart(category, selectedItem);
+    }
+  });
+}
+
 $(function () {
   if ($("body").hasClass("home")) {
     // Home page
@@ -187,12 +237,18 @@ $(function () {
     setName();
     restartGame();
   }
+  if ($("body").hasClass("workshop")) {
+    showCategory();
+    showItem();
+    chooseItem();
+  }
   if ($("body").hasClass("garden")) {
     // Garden page
     scrollGifts();
     addGift();
     startGarden();
   }
+  // TO-DO: ADD LISTENER, CLEAR ON RELOAD
 });
 
 export { addToCart, removeFromCart };
