@@ -4,32 +4,27 @@
     <%- include('partials/head'); %> <%- include('partials/scripts'); %>
   </head>
   <body class="workshop">
-    <h1>Workshop page</h1>
-
-    <!-- Click to open Cart modal (below) -->
-    <button id="cart-btn" type="button" class="btn btn-primary">
-      Show Cart
-    </button>
-
-    <!-- Customize gallery here -->
-    <div class="container-fluid" id="gallery-container">
-      <% for (category in allItems) { %>
-      <div><strong class="item-category"><%= category %></strong></div>
-      <% allItems[category].forEach(function(item) { %>
-      <div
-        class="item-container"
-        data-category="<%=category%>"
-        data-item="<%=item.title%>"
-      >
-        <div class="item-title"><%= item.title %></div>
-        <div class="item-description"><%=item.description%></div>
-        <img
-          class="item-image"
-          height="324"
-          width="324"
-          src="<%= item.image %>"
-        />
-        <button
+    <div id="workshop-container">
+      <!-- Customize gallery here -->
+      <div class="container-fluid" id="gallery-container">
+        <% for (category in allItems) { %> <%
+        allItems[category].forEach(function(item) { %>
+        <div class="item-drop drag-drop">
+          <div
+            class="item-container"
+            data-category="<%=category%>"
+            data-item="<%=item.title%>"
+          >
+            <div class="item-title"><%= category %></div>
+            <!-- <div class="item-title"><%= item.title %></div> -->
+            <!-- <div class="item-description"><%=item.description%></div> -->
+            <img
+              class="item-image"
+              height="100"
+              width="100"
+              src="<%= item.image %>"
+            />
+            <!-- <button
           padding=""
           type="button"
           class="buy-btn btn btn-primary"
@@ -37,13 +32,23 @@
           data-item="<%=item.title%>"
         >
           Add to Cart
-        </button>
+        </button> -->
+          </div>
+        </div>
+        <% }); %> <% } %>
       </div>
-      <% }); %> <% } %>
+
+      <!-- <div id="yes-drop" class="drag-drop">#yes-drop</div> -->
+      <div id="workshop-table" class="dropzone"></div>
     </div>
 
+    <!-- Click to open Cart modal (below) -->
+    <!-- <button id="cart-btn" type="button" class="btn btn-primary">
+      Show Cart
+    </button> -->
+
     <!-- Cart Modal -->
-    <div
+    <!-- <div
       class="modal fade"
       id="cart-modal"
       tabindex="-1"
@@ -61,10 +66,10 @@
               aria-label="Close"
             ></button>
           </div>
-          <div id="cart-body" class="modal-body">
-            <!-- By default, all items are added to Cart modal body. -->
-            <!-- In app.js, we hide any items not in cart. -->
-            <% for (category in allItems) { %> <%
+          <div id="cart-body" class="modal-body"> -->
+    <!-- By default, all items are added to Cart modal body. -->
+    <!-- In app.js, we hide any items not in cart. -->
+    <!-- <% for (category in allItems) { %> <%
             allItems[category].forEach(function(item) { %>
             <div
               class="cart-item-container"
@@ -101,6 +106,6 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </body>
 </html>

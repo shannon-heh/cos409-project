@@ -6,6 +6,18 @@ body {
   margin: 0;
 }
 
+#gallery-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* GARDEN PAGE */
 #garden-wrapper {
   height: 100%;
@@ -70,4 +82,52 @@ body {
   width: 400px;
   display: flex;
   flex-direction: column;
+}
+
+/* DRAGGABLE STYLING HERE */
+#workshop-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#workshop-table {
+  height: 50%;
+}
+
+.dropzone {
+  background-color: #bfe4ff;
+  border: dashed 4px transparent;
+  border-radius: 4px;
+  margin: 10px auto 30px;
+  padding: 10px;
+  width: 80%;
+  transition: background-color 0.3s;
+}
+
+.drop-active {
+  border-color: #aaa;
+}
+
+.drop-target {
+  border-color: #fff;
+  border-style: solid;
+}
+
+.drag-drop {
+  display: inline-block;
+  min-width: 40px;
+  padding: 2em 0.5em;
+  margin: 1rem 0 0 1rem;
+  border: solid 2px black;
+  touch-action: none;
+  transform: translate(0px, 0px);
+  transition: background-color 0.3s;
+}
+
+.drag-drop.can-drop {
+  color: white;
+  border: solid 2px white;
 }
