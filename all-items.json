@@ -1,24 +1,38 @@
 {
-  "Chips": [
-    {
-      "title": "Wood Chip",
-      "description": "Nanocellulose (a wood-derived material) is a viable alternative for semiconducting material (e.g. silicon) that make up the support layer (“substrate”) for today’s computer chips. ",
-      "image": "images/algaeBattery_light_ed.png"
-    }
-  ],
-  "Plant Computers": [
-    {
-      "title": "Plant Sensor",
-      "description": "It's a plant.",
-      "image": "images/algaeBattery_light_ed.png"
-    }
-  ],
+  "Chips": {
+    "image": "images/chip_together_rotate.png",
+    "items": [
+      {
+        "title": "Wood Chip",
+        "description": "Nanocellulose (a wood-derived material) is a viable alternative for semiconducting material (e.g. silicon) that make up the support layer (“substrate”) for today’s computer chips. "
+      },
+      {
+        "title": "Silk Chip",
+        "description": "Hwang et al. showed that silk (water-soluble, biodegradable) as substrate combined with other inorganic semiconductors can be used to build devices."
+      }
+    ]
+  },
+  "Plant Computers": {
+    "image": "images/plant_antennae.png",
+    "items": [
+      {
+        "title": "Plant Sensor",
+        "description": "It's a plant."
+      },
+      {
+        "title": "Plant Notification",
+        "description": "It sends notifs to you"
+      }
+    ]
+  },
 
-  "Batteries": [
-    {
-      "title": "Algae Battery",
-      "description": "Algae has the potential to be used as bio-batteries. It works similarly to typical solar cells; it captures sunlight, stores it, and converts it to electric current.",
-      "image": "images/algaeBattery_light_ed.png"
-    }
-  ]
+  "Batteries": {
+    "image": "images/algae_battery.png",
+    "items": [
+      {
+        "title": "Algae Battery",
+        "description": "Algae has the potential to be used as bio-batteries. It works similarly to typical solar cells; it captures sunlight, stores it, and converts it to electric current."
+      }
+    ]
+  }
 }

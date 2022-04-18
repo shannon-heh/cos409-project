@@ -39,6 +39,7 @@ The following are dependencies specified in `package-lock.json`, installed using
 - `express`: node.js framework to build APIs in JS
 - `pg`: allows interfacing with PostgreSQL database
 - `nodemon`: auto-restarts node server when changes made to JS files in current directory
+- `interact.js`: JS library to make drag & drop functionality easier
 
 **To install these dependencies and update your `package-lock.json`:**
 

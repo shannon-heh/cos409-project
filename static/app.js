@@ -48,7 +48,7 @@ function setName() {
 // Helper method: return cart as array from local storage
 function getCart() {
   if (!("cart" in localStorage)) {
-    return [];
+    return {};
   }
   return JSON.parse(localStorage.getItem("cart"));
 }
@@ -59,68 +59,19 @@ function setCart(cart) {
 }
 
 // Adds an item to user's cart
-// Assumes cart is stored as list of items
+// Assumes cart is stored as object: key = category, value = item
 // Assumes user cannot add an item more than once
-function addToCart() {
-  $(".buy-btn").on("click", function () {
-    const item = $(this).attr("data-item");
-
-    const cart = getCart();
-    cart.push(item);
-    setCart(cart);
-
-    // disable button, change text
-    $(this).attr("disabled", true);
-    $(this).html("Added");
-  });
+function addToCart(category, item) {
+  const cart = getCart();
+  cart[category] = item;
+  setCart(cart);
 }
 
 // Remove item from cart
-function removeFromCart() {
-  $(".remove-btn").on("click", function () {
-    const itemToRemove = $(this).attr("data-item");
-
-    const cart = getCart();
-    setCart(
-      cart.filter((item) => {
-        return item != itemToRemove;
-      })
-    );
-
-    // hide item from cart pop-up and enable Add to Cart button
-    $(this).parent(".cart-item-container").attr("hidden", true);
-    const btnSelector = `.buy-btn[data-item="${itemToRemove}"]`;
-    $(btnSelector).attr("disabled", false);
-    $(btnSelector).html("Add to Cart");
-  });
-}
-
-// Show cart as pop-up
-function showCart() {
-  $("#cart-btn").on("click", function () {
-    const cart = getCart();
-
-    // hide items that aren't in cart
-    $(".cart-item-container").each(function () {
-      const item = $(this).attr("data-item");
-      $(this).attr("hidden", !cart.includes(item));
-    });
-
-    // show cart items in pop-up
-    $("#cart-modal").modal("show");
-  });
-}
-
-// Disable Add to Cart button for any items already in cart
-function disableAddToCart() {
-  $(".buy-btn").each(function () {
-    const cart = getCart();
-    const item = $(this).attr("data-item");
-    if (cart.includes(item)) {
-      $(this).attr("disabled", true);
-      $(this).html("Added");
-    }
-  });
+function removeFromCart(category) {
+  const cart = getCart();
+  delete cart[category];
+  setCart(cart);
 }
 
 // Controls auto-scroll down Garden page
@@ -210,6 +161,79 @@ function startGarden() {
   $("#scroll-btn").trigger("click");
 }
 
+// Open category modal
+// Defaults to showing first iteme
+function showCategory() {
+  $(".category-container").on("click", function () {
+    // do not trigger click event on drag
+    if ($(this).hasClass("noclick")) {
+      $(this).removeClass("noclick");
+      return;
+    }
+
+    const selectedCategory = $(this).attr("data-category");
+    const modal = `[id='${selectedCategory}-modal']`; // parent modal
+
+    // set first item as active if none are active
+    if ($(`${modal} .item-modal-btn.active`).length == 0) {
+      $(`${modal} .item-modal-btn`).first().addClass("active");
+      let count = 0;
+      $(`${modal} .item-modal-text`).each(function () {
+        $(this).attr("hidden", count > 0);
+        count += 1;
+      });
+    }
+
+    $(modal).modal("show");
+  });
+}
+
+// Show description for selected item
+function showItem() {
+  $(".item-modal-btn").on("click", function () {
+    const selectedItem = $(this).attr("data-item");
+    const category = $(this).attr("data-category");
+    const categoryId = `.modal-container[data-category='${category}']`;
+
+    // hide text for other items
+    $(`${categoryId} .item-modal-text`).each(function () {
+      const item = $(this).attr("data-item");
+      $(this).attr("hidden", selectedItem != item);
+    });
+
+    // set selected button as active
+    $(`${categoryId} .item-modal-btn`).each(function () {
+      const item = $(this).attr("data-item");
+      if (selectedItem == item) {
+        $(this).addClass("active");
+      } else {
+        $(this).removeClass("active");
+      }
+    });
+  });
+}
+
+// Selects item using Done button on category modal
+function chooseItem() {
+  $(".modal-done-btn").on("click", function () {
+    const category = $(this).attr("data-category");
+    const categoryId = `[data-category='${category}']`;
+
+    // get selected item
+    const selectedItem = $(
+      `.modal-container${categoryId} .item-modal-btn.active`
+    ).attr("data-item");
+
+    // set label
+    $(`.category-container${categoryId} .item-choice`).html(selectedItem);
+
+    // only add to cart if it's on the table
+    if ($(`.category-container${categoryId}`).hasClass("can-drop")) {
+      addToCart(category, selectedItem);
+    }
+  });
+}
+
 $(function () {
   if ($("body").hasClass("home")) {
     // Home page
@@ -218,11 +242,9 @@ $(function () {
     restartGame();
   }
   if ($("body").hasClass("workshop")) {
-    // Workshop page
-    addToCart();
-    removeFromCart();
-    showCart();
-    disableAddToCart();
+    showCategory();
+    showItem();
+    chooseItem();
   }
   if ($("body").hasClass("garden")) {
     // Garden page
@@ -230,4 +252,7 @@ $(function () {
     addGift();
     startGarden();
   }
+  // TO-DO: ADD LISTENER, CLEAR ON RELOAD
 });
+
+export { addToCart, removeFromCart, showCategory };
