@@ -17,7 +17,7 @@ function setWelcome() {
 
 // Set user's name
 function setName() {
-  $("#username-btn").on("click", function () {
+  $("#username-form").on("submit", function () {
     const username = $("#username-input").val();
     // restrict username length
     if (username.length > 100 || username.length <= 0) {
