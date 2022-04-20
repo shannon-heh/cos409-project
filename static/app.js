@@ -299,6 +299,7 @@ $(function () {
     showGiftInput();
     if (!gaveGift()) $("#garden-intro").modal("show");
   }
+  // TO-DO: ADD LISTENER, CLEAR ON RELOAD
 });
 
 export { addToCart, removeFromCart, showCategory };

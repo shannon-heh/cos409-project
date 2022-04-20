@@ -3,6 +3,15 @@
   <head>
     <%- include('partials/head'); %>
   </head>
+  <style>
+    body {
+      background: url("Workshop.png") no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+  </style>
   <body class="workshop">
     <div id="workshop-container">
       <button id="workshop-gift-btn" type="button" class="btn btn-dark">
@@ -99,10 +108,11 @@
           <div class="modal-footer">
             <button
               type="button"
-              class="btn btn-secondary"
+              class="btn btn-secondary modal-done-btn"
               data-bs-dismiss="modal"
+              data-category="<%=category%>"
             >
-              Close
+              Done
             </button>
           </div>
         </div>
