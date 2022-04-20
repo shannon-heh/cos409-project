@@ -1,6 +1,5 @@
 html,
 body {
-  /* overflow: hidden; */
   height: 100%;
   padding: 0;
   margin: 0;
@@ -15,7 +14,7 @@ body {
 #scroll-btn {
   position: absolute;
   top: 10px;
-  right: 10px;
+  left: 10px;
 }
 
 #garden-container {
@@ -24,6 +23,10 @@ body {
   justify-content: center;
   align-items: center;
   margin-bottom: 70px;
+}
+
+#garden-container .gift-card {
+  background-color: rgb(255 255 255 / 0.8);
 }
 
 .gift-card {
@@ -48,7 +51,7 @@ body {
 
 #gift-toast,
 #gift-toast .toast-header {
-  background-color: #97c95c;
+  background-color: #198754;
 }
 
 #gift-toast .toast-header p {
@@ -143,4 +146,44 @@ body {
   background: transparent;
   color: white;
   border: solid 2px white;
+}
+
+#menu-dropdown {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+}
+
+#menu-dropdown .btn {
+  width: 160px;
+}
+
+#workshop-gift-btn {
+  position: absolute;
+  top: 10px;
+  width: 150px;
+  z-index: 100;
+}
+
+/* BACKGROUND IMAGES */
+body.workshop,
+body.garden {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body.workshop {
+  background: url("Workshop.png") no-repeat center center fixed;
+}
+
+body.garden {
+  background: url("Garden.png") no-repeat center center fixed;
+}
+
+.btn-primary {
+  border-color: #198754 !important;
+  background-color: #198754 !important;
 }

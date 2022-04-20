@@ -17,7 +17,8 @@ function setWelcome() {
 
 // Set user's name
 function setName() {
-  $("#username-form").on("submit", function () {
+  $("#username-form").on("submit", function (e) {
+    e.preventDefault();
     const username = $("#username-input").val();
     // restrict username length
     if (username.length > 100 || username.length <= 0) {
@@ -234,6 +235,12 @@ function chooseItem() {
   });
 }
 
+function setWorkshopButtons() {
+  $("#workshop-gift-btn").on("click", function () {
+    window.location.replace("/garden");
+  });
+}
+
 $(function () {
   if ($("body").hasClass("home")) {
     // Home page
@@ -245,6 +252,7 @@ $(function () {
     showCategory();
     showItem();
     chooseItem();
+    setWorkshopButtons();
   }
   if ($("body").hasClass("garden")) {
     // Garden page

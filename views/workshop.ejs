@@ -3,17 +3,11 @@
   <head>
     <%- include('partials/head'); %> <%- include('partials/scripts'); %>
   </head>
-  <style>
-    body {
-      background: url("Workshop.png") no-repeat center center fixed;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-    }
-  </style>
   <body class="workshop">
     <div id="workshop-container">
+      <button id="workshop-gift-btn" type="button" class="btn btn-dark">
+        Give A Gift!
+      </button>
       <div class="container-fluid" id="gallery-container">
         <% for (category in allItems) { %>
         <div class="category-container drag-drop" data-category="<%=category%>">
