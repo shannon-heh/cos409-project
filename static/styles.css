@@ -47,6 +47,7 @@ body {
   position: absolute;
   top: 60px;
   right: 10px;
+  z-index: 150;
 }
 
 #gift-toast,
@@ -73,6 +74,15 @@ body {
   width: 400px;
   display: flex;
   flex-direction: column;
+}
+
+#finish-game-btn,
+#workshop-gift-btn {
+  position: absolute;
+  top: 55px;
+  right: 10px;
+  width: 160px;
+  z-index: 90;
 }
 
 /* DRAGGABLE STYLING HERE */
@@ -157,13 +167,6 @@ body {
 
 #menu-dropdown .btn {
   width: 160px;
-}
-
-#workshop-gift-btn {
-  position: absolute;
-  top: 10px;
-  width: 150px;
-  z-index: 100;
 }
 
 /* BACKGROUND IMAGES */

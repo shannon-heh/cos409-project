@@ -136,15 +136,19 @@ function addGift() {
     }).then((res) => {
       // handle errors in adding gift
       if (res.status == 200) {
-        $(toastText).html("Your gift is in the garden!");
+        $(toastText).html("Your gift is in the garden for others to receive!");
       } else {
         $(toastText).html(
-          "Oops! Your gift was not added to the garden. Please try again."
+          "Oops! Your gift was not put into the garden. Please try again."
         );
       }
       const toastEl = new bootstrap.Toast($("#gift-toast"));
       toastEl.show();
     });
+
+    // show finish game action
+    $("#finish-game-btn").attr("hidden", false);
+    localStorage.setItem("gave-gift", true);
 
     // clear field
     $("#give-gift-input").val("");
@@ -160,6 +164,14 @@ function addGift() {
 // Auto-start garden scroll
 function startGarden() {
   $("#scroll-btn").trigger("click");
+}
+
+// Logic for Finish Game button on Garden page
+function setFinishGame() {
+  $("#finish-game-btn").on("click", function () {
+    window.location.replace("/final");
+  });
+  $("#finish-game-btn").attr("hidden", !localStorage.getItem("gave-gift"));
 }
 
 // Open category modal
@@ -259,6 +271,7 @@ $(function () {
     scrollGifts();
     addGift();
     startGarden();
+    setFinishGame();
   }
   // TO-DO: ADD LISTENER, CLEAR ON RELOAD
 });
