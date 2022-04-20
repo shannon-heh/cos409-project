@@ -1,6 +1,5 @@
 html,
 body {
-  /* overflow: hidden; */
   height: 100%;
   padding: 0;
   margin: 0;
@@ -15,7 +14,7 @@ body {
 #scroll-btn {
   position: absolute;
   top: 10px;
-  right: 10px;
+  left: 10px;
 }
 
 #garden-container {
@@ -24,6 +23,10 @@ body {
   justify-content: center;
   align-items: center;
   margin-bottom: 70px;
+}
+
+#garden-container .gift-card {
+  background-color: rgb(255 255 255 / 0.8);
 }
 
 .gift-card {
@@ -40,15 +43,22 @@ body {
   width: 50%;
 }
 
+#give-gift-btn {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
 #gift-toast-container {
   position: absolute;
   top: 60px;
   right: 10px;
+  z-index: 150;
 }
 
 #gift-toast,
 #gift-toast .toast-header {
-  background-color: #97c95c;
+  background-color: #198754;
 }
 
 #gift-toast .toast-header p {
@@ -70,6 +80,20 @@ body {
   width: 400px;
   display: flex;
   flex-direction: column;
+}
+
+#finish-game-btn,
+#workshop-gift-btn,
+#show-gift-input-btn {
+  position: absolute;
+  top: 55px;
+  right: 10px;
+  width: 160px;
+  z-index: 90;
+}
+
+#finish-game-btn {
+  top: 100px;
 }
 
 /* DRAGGABLE STYLING HERE */
@@ -143,4 +167,38 @@ body {
   background: transparent;
   color: white;
   border: solid 2px white;
+}
+
+/* MENU DROPDOWN */
+#menu-dropdown {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+}
+
+#menu-dropdown .btn {
+  width: 160px;
+}
+
+/* BACKGROUND IMAGES */
+body.workshop,
+body.garden {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body.workshop {
+  background: url("Workshop.png") no-repeat center center fixed;
+}
+
+body.garden {
+  background: url("Garden.png") no-repeat center center fixed;
+}
+
+.btn-primary {
+  border-color: #198754 !important;
+  background-color: #198754 !important;
 }

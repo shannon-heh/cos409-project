@@ -17,7 +17,8 @@ function setWelcome() {
 
 // Set user's name
 function setName() {
-  $("#username-btn").on("click", function () {
+  $("#username-form").on("submit", function (e) {
+    e.preventDefault();
     const username = $("#username-input").val();
     // restrict username length
     if (username.length > 100 || username.length <= 0) {
@@ -72,6 +73,13 @@ function removeFromCart(category) {
   const cart = getCart();
   delete cart[category];
   setCart(cart);
+}
+
+// Returns truthy value if player has given gift
+function gaveGift() {
+  const gaveGift = localStorage.getItem("gave-gift");
+  if (gaveGift == "false") return false;
+  return gaveGift;
 }
 
 // Controls auto-scroll down Garden page
@@ -135,15 +143,19 @@ function addGift() {
     }).then((res) => {
       // handle errors in adding gift
       if (res.status == 200) {
-        $(toastText).html("Your gift is in the garden!");
+        $(toastText).html("Your gift is in the garden for others to receive!");
       } else {
         $(toastText).html(
-          "Oops! Your gift was not added to the garden. Please try again."
+          "Oops! Your gift was not put into the garden. Please try again."
         );
       }
       const toastEl = new bootstrap.Toast($("#gift-toast"));
       toastEl.show();
     });
+
+    // show finish game action
+    $("#finish-game-btn").attr("hidden", false);
+    localStorage.setItem("gave-gift", true);
 
     // clear field
     $("#give-gift-input").val("");
@@ -159,6 +171,29 @@ function addGift() {
 // Auto-start garden scroll
 function startGarden() {
   $("#scroll-btn").trigger("click");
+}
+
+// Controls showing or hiding Gift input
+function showGiftInput() {
+  const wrapper = "#give-gift-wrapper";
+  $("#show-gift-input-btn").on("click", function () {
+    if ($(wrapper).attr("hidden")) {
+      $(wrapper).attr("hidden", false);
+      $(this).html("Hide Gift");
+    } else {
+      $(wrapper).attr("hidden", true);
+      $(this).html("Give A Gift");
+    }
+  });
+}
+
+// Logic for Finish Game button on Garden page
+function setFinishGame() {
+  $("#finish-game-btn").on("click", function () {
+    window.location.replace("/final");
+  });
+  const gaveGift = localStorage.getItem("gave-gift");
+  $("#finish-game-btn").attr("hidden", !gaveGift);
 }
 
 // Open category modal
@@ -234,6 +269,12 @@ function chooseItem() {
   });
 }
 
+function setWorkshopButtons() {
+  $("#workshop-gift-btn").on("click", function () {
+    window.location.replace("/garden");
+  });
+}
+
 $(function () {
   if ($("body").hasClass("home")) {
     // Home page
@@ -242,15 +283,21 @@ $(function () {
     restartGame();
   }
   if ($("body").hasClass("workshop")) {
+    // Workshop page
     showCategory();
     showItem();
     chooseItem();
+    setWorkshopButtons();
+    if (!gaveGift()) $("#workshop-intro").modal("show");
   }
   if ($("body").hasClass("garden")) {
     // Garden page
     scrollGifts();
     addGift();
     startGarden();
+    setFinishGame();
+    showGiftInput();
+    if (!gaveGift()) $("#garden-intro").modal("show");
   }
   // TO-DO: ADD LISTENER, CLEAR ON RELOAD
 });
