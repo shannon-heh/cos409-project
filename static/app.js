@@ -288,7 +288,6 @@ $(function () {
     showItem();
     chooseItem();
     setWorkshopButtons();
-    console.log(gaveGift());
     if (!gaveGift()) $("#workshop-intro").modal("show");
   }
   if ($("body").hasClass("garden")) {
