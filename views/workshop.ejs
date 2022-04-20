@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%- include('partials/head'); %> <%- include('partials/scripts'); %>
+    <%- include('partials/head'); %>
   </head>
   <body class="workshop">
     <div id="workshop-container">
       <button id="workshop-gift-btn" type="button" class="btn btn-dark">
-        Give A Gift!
+        Go to Garden
       </button>
       <div class="container-fluid" id="gallery-container">
         <% for (category in allItems) { %>
@@ -85,5 +85,30 @@
       </div>
     </div>
     <% } %>
+
+    <!-- Intro pop-up -->
+    <div id="workshop-intro" class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Welcome to the Workshop!</h5>
+          </div>
+          <div class="modal-body">
+            <p>Introduce the workshop.</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('partials/scripts'); %>
   </body>
 </html>

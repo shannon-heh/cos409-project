@@ -75,6 +75,13 @@ function removeFromCart(category) {
   setCart(cart);
 }
 
+// Returns truthy value if player has given gift
+function gaveGift() {
+  const gaveGift = localStorage.getItem("gave-gift");
+  if (gaveGift == "false") return false;
+  return gaveGift;
+}
+
 // Controls auto-scroll down Garden page
 function scrollGifts() {
   const btn = "#scroll-btn";
@@ -166,12 +173,27 @@ function startGarden() {
   $("#scroll-btn").trigger("click");
 }
 
+// Controls showing or hiding Gift input
+function showGiftInput() {
+  const wrapper = "#give-gift-wrapper";
+  $("#show-gift-input-btn").on("click", function () {
+    if ($(wrapper).attr("hidden")) {
+      $(wrapper).attr("hidden", false);
+      $(this).html("Hide Gift");
+    } else {
+      $(wrapper).attr("hidden", true);
+      $(this).html("Give A Gift");
+    }
+  });
+}
+
 // Logic for Finish Game button on Garden page
 function setFinishGame() {
   $("#finish-game-btn").on("click", function () {
     window.location.replace("/final");
   });
-  $("#finish-game-btn").attr("hidden", !localStorage.getItem("gave-gift"));
+  const gaveGift = localStorage.getItem("gave-gift");
+  $("#finish-game-btn").attr("hidden", !gaveGift);
 }
 
 // Open category modal
@@ -261,10 +283,13 @@ $(function () {
     restartGame();
   }
   if ($("body").hasClass("workshop")) {
+    // Workshop page
     showCategory();
     showItem();
     chooseItem();
     setWorkshopButtons();
+    console.log(gaveGift());
+    if (!gaveGift()) $("#workshop-intro").modal("show");
   }
   if ($("body").hasClass("garden")) {
     // Garden page
@@ -272,8 +297,9 @@ $(function () {
     addGift();
     startGarden();
     setFinishGame();
+    showGiftInput();
+    if (!gaveGift()) $("#garden-intro").modal("show");
   }
-  // TO-DO: ADD LISTENER, CLEAR ON RELOAD
 });
 
 export { addToCart, removeFromCart, showCategory };

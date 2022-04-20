@@ -9,7 +9,15 @@
       <button id="scroll-btn" type="button" class="btn btn-primary">
         Start Scroll
       </button>
-      <button id="finish-game-btn" type="button" class="btn btn-dark" hidden="hidden">
+      <button id="show-gift-input-btn" type="button" class="btn btn-dark">
+        Give A Gift
+      </button>
+      <button
+        id="finish-game-btn"
+        type="button"
+        class="btn btn-dark"
+        hidden="hidden"
+      >
         Finish the Game
       </button>
       <div class="container">
@@ -26,23 +34,30 @@
               </div>
               <% }); %>
               <div id="end-gifts"></div>
-              <div id="give-gift-wrapper" class="input-group mb-3">
-                <input
-                  id="give-gift-input"
-                  type="text"
-                  class="form-control"
-                  placeholder="Give a gift!"
-                  aria-label="Give a gift!"
-                  aria-describedby="basic-addon1"
-                />
-                <div class="input-group-append">
-                  <button
-                    id="give-gift-btn"
-                    class="btn btn-primary"
-                    type="button"
-                  >
-                    Give Gift
-                  </button>
+              <div id="give-gift-wrapper" class="mb-3" hidden="hidden">
+                <div class="card">
+                  <div class="card-body">
+                    <label for="gift-textarea" class="form-label"
+                      ><strong>Give a Gift!</strong> We invite you to speculate
+                      on the future of computing. [Insert Prompt]</label
+                    >
+                    <div style="position: relative">
+                      <textarea
+                        id="give-gift-input"
+                        class="form-control"
+                        id="gift-textarea"
+                        rows="3"
+                        style="resize: none"
+                      ></textarea>
+                      <button
+                        id="give-gift-btn"
+                        class="btn btn-primary"
+                        type="button"
+                      >
+                        Give Gift
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -61,6 +76,29 @@
         >
           <div class="toast-header">
             <p class="toast-text mr-auto"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Intro pop-up -->
+    <div id="garden-intro" class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Welcome to the Garden!</h5>
+          </div>
+          <div class="modal-body">
+            <p>Introduce the garden.</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
           </div>
         </div>
       </div>

@@ -43,6 +43,12 @@ body {
   width: 50%;
 }
 
+#give-gift-btn {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
 #gift-toast-container {
   position: absolute;
   top: 60px;
@@ -77,12 +83,17 @@ body {
 }
 
 #finish-game-btn,
-#workshop-gift-btn {
+#workshop-gift-btn,
+#show-gift-input-btn {
   position: absolute;
   top: 55px;
   right: 10px;
   width: 160px;
   z-index: 90;
+}
+
+#finish-game-btn {
+  top: 100px;
 }
 
 /* DRAGGABLE STYLING HERE */
