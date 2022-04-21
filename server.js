@@ -11,7 +11,7 @@ import { Gift } from "./gift.js";
 // use ejs template engine
 app.set("view engine", "ejs");
 app.use(express.static("static"));
-app.use(express.static('static/images'))
+app.use(express.static("static/images"));
 app.use(express.json());
 
 // Home page
@@ -67,6 +67,6 @@ app.post("/add-gift", async (req, res) => {
 });
 
 // Listens for client requests
-app.listen(process.env.SERVER_PORT, () => {
-  console.log(`Listening on port ${process.env.SERVER_PORT}`);
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Listening on port ${process.env.PORT}`);
 });
