@@ -213,7 +213,7 @@ function showCategory() {
     if ($(`${modal} .item-modal-btn.active`).length == 0) {
       $(`${modal} .item-modal-btn`).first().addClass("active");
       let count = 0;
-      $(`${modal} .item-modal-text`).each(function () {
+      $(`${modal} .item-modal-container`).each(function () {
         $(this).attr("hidden", count > 0);
         count += 1;
       });
@@ -231,7 +231,7 @@ function showItem() {
     const categoryId = `.modal-container[data-category='${category}']`;
 
     // hide text for other items
-    $(`${categoryId} .item-modal-text`).each(function () {
+    $(`${categoryId} .item-modal-container`).each(function () {
       const item = $(this).attr("data-item");
       $(this).attr("hidden", selectedItem != item);
     });
@@ -250,7 +250,7 @@ function showItem() {
 
 // Selects item using Done button on category modal
 function chooseItem() {
-  $(".modal-done-btn").on("click", function () {
+  $(".category-modal .modal-done-btn").on("click", function () {
     const category = $(this).attr("data-category");
     const categoryId = `[data-category='${category}']`;
 
@@ -261,6 +261,13 @@ function chooseItem() {
 
     // set label
     $(`.category-container${categoryId} .item-choice`).html(selectedItem);
+
+    // set image src
+    const imgSrc = selectedItem.toLowerCase().replace(/ /g, "_");
+    $(`.category-container${categoryId} .item-image`).attr(
+      "src",
+      `${imgSrc}.png`
+    );
 
     // only add to cart if it's on the table
     if ($(`.category-container${categoryId}`).hasClass("can-drop")) {
@@ -299,7 +306,6 @@ $(function () {
     showGiftInput();
     if (!gaveGift()) $("#garden-intro").modal("show");
   }
-  // TO-DO: ADD LISTENER, CLEAR ON RELOAD
 });
 
 export { addToCart, removeFromCart, showCategory };

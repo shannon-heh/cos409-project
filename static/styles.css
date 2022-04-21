@@ -117,9 +117,15 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-width: 150px;
 }
 
 .modal-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-modal-container {
   display: flex;
   flex-direction: row;
 }
@@ -200,5 +206,24 @@ body.garden {
 
 .btn-primary {
   border-color: #198754 !important;
+  background-color: #198754 !important;
+}
+
+.btn-outline-primary {
+  border-color: #198754 !important;
+  color: #198754 !important;
+}
+
+.btn-outline-primary.active {
+  color: white !important;
+  background-color: #198754 !important;
+}
+
+.btn-outline-primary:hover {
+  color: white !important;
+  background-color: #198754 !important;
+}
+
+.dropdown-item:active {
   background-color: #198754 !important;
 }
