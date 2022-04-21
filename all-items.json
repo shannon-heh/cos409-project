@@ -1,37 +1,42 @@
 {
   "Chips": {
-    "image": "images/chip_together_rotate.png",
     "items": [
       {
+        "id": "chip_wood",
         "title": "Wood Chip",
-        "description": "Nanocellulose (a wood-derived material) is a viable alternative for semiconducting material (e.g. silicon) that make up the support layer (“substrate”) for today’s computer chips. "
+        "description": "Nanocellulose (a wood-derived material) is a viable alternative for semiconducting material (e.g. silicon) that make up the support layer (“substrate”) for today’s computer chips. ",
+        "image": "images/wood_chip.png"
       },
       {
+        "id": "chip_silk",
         "title": "Silk Chip",
-        "description": "Hwang et al. showed that silk (water-soluble, biodegradable) as substrate combined with other inorganic semiconductors can be used to build devices."
+        "description": "Hwang et al. showed that silk (water-soluble, biodegradable) as substrate combined with other inorganic semiconductors can be used to build devices.",
+        "image": "images/silk_chip.png"
+      },
+      {
+        "id": "chip_algae",
+        "title": "Algae Chip",
+        "description": "i like algae chips, yum",
+        "image": "images/algae_chip.png"
       }
     ]
   },
   "Plant Computers": {
-    "image": "images/plant_antennae.png",
     "items": [
       {
         "title": "Plant Sensor",
-        "description": "It's a plant."
-      },
-      {
-        "title": "Plant Notification",
-        "description": "It sends notifs to you"
+        "description": "It's a plant.",
+        "image": "images/plant_sensor.png"
       }
     ]
   },
 
   "Batteries": {
-    "image": "images/algae_battery.png",
     "items": [
       {
         "title": "Algae Battery",
-        "description": "Algae has the potential to be used as bio-batteries. It works similarly to typical solar cells; it captures sunlight, stores it, and converts it to electric current."
+        "description": "Algae has the potential to be used as bio-batteries. It works similarly to typical solar cells; it captures sunlight, stores it, and converts it to electric current.",
+        "image": "images/algae_battery.png"
       }
     ]
   }
