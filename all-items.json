@@ -4,8 +4,7 @@
       {
         "id": "chip_wood",
         "title": "Wood Chip",
-        "description": "Nanocellulose (a wood-derived material) is a viable alternative for semiconducting material (e.g. silicon) that make up the support layer (“substrate”) for today’s computer chips. ",
-        "image": "images/wood_chip.png"
+        "description": "How much wood could wood chip chuck? Nanocellulose, a wood-derived material, has been shown as a viable option to replace silicon as a substrate for computer chips."
       },
       {
         "id": "chip_silk",
@@ -35,8 +34,7 @@
     "items": [
       {
         "title": "Algae Battery",
-        "description": "Algae has the potential to be used as bio-batteries. It works similarly to typical solar cells; it captures sunlight, stores it, and converts it to electric current.",
-        "image": "images/algae_battery.png"
+        "description": "Batteries, but make it green. Algae has the potential to be used as bio-batteries. It works similarly to solar cells by capturing sunlight, stores it, and converting it to electric current."
       }
     ]
   }
