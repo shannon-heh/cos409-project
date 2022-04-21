@@ -4,7 +4,8 @@
       {
         "id": "chip_wood",
         "title": "Wood Chip",
-        "description": "How much wood could wood chip chuck? Nanocellulose, a wood-derived material, has been shown as a viable option to replace silicon as a substrate for computer chips."
+        "description": "How much wood could wood chip chuck? Nanocellulose, a wood-derived material, has been shown as a viable option to replace silicon as a substrate for computer chips.",
+        "image": "images/wood_chip.png"
       },
       {
         "id": "chip_silk",
@@ -34,7 +35,8 @@
     "items": [
       {
         "title": "Algae Battery",
-        "description": "Batteries, but make it green. Algae has the potential to be used as bio-batteries. It works similarly to solar cells by capturing sunlight, stores it, and converting it to electric current."
+        "description": "Batteries, but make it green. Algae has the potential to be used as bio-batteries. It works similarly to solar cells by capturing sunlight, stores it, and converting it to electric current.",
+        "image": "images/algae_battery.png"
       }
     ]
   }
