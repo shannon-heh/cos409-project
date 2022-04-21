@@ -68,5 +68,5 @@ app.post("/add-gift", async (req, res) => {
 
 // Listens for client requests
 app.listen(process.env.PORT || 3000, () => {
-  console.log(`Listening on port ${process.env.SERVER_PORT}`);
+  console.log(`Listening on port ${process.env.PORT}`);
 });
