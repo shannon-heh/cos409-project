@@ -276,9 +276,18 @@ function chooseItem() {
   });
 }
 
+// Activate buttons on workshop page
 function setWorkshopButtons() {
   $("#workshop-gift-btn").on("click", function () {
     window.location.replace("/garden");
+  });
+}
+
+// Clear player's cart on reload or closing of page
+function clearCartOnUnload() {
+  window.addEventListener("beforeunload", function (e) {
+    delete e["returnValue"];
+    localStorage.setItem("cart", JSON.stringify({}));
   });
 }
 
@@ -295,6 +304,7 @@ $(function () {
     showItem();
     chooseItem();
     setWorkshopButtons();
+    clearCartOnUnload();
     if (!gaveGift()) $("#workshop-intro").modal("show");
   }
   if ($("body").hasClass("garden")) {
