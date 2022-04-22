@@ -44,8 +44,8 @@ app.get("/garden", async (req, res) => {
 });
 
 // Final page
-app.get("/final", async (req, res) => {
-  res.render("final");
+app.get("/action", async (req, res) => {
+  res.render("action");
 });
 
 // About page

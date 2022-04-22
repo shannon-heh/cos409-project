@@ -9,7 +9,7 @@
 - `/`: Home page (where player enters name & starts)
 - `/workshop`: Workshop page (for dress-up game)
 - `/garden`: Garden page (displays gift stream)
-- `/final`: Final page (after player finishes game)
+- `/action`: Final page (after player finishes game)
 - `/about`: About page
 
 ### Development process
