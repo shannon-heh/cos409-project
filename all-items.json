@@ -10,13 +10,13 @@
       {
         "id": "chip_silk",
         "title": "Silk Chip",
-        "description": "Silk, which shares many of the same properties as spider silk, can act as glass fiber optic cables that carry information for electronic devices. Silk is both a water-soluble and biodegradable: when combined with other inorganic semiconductors, the substrate can be used to build devices.",
+        "description": "Stronger than steel, light as air; silk can do it all. Silk works like glass fiber optic cables to transmit laser light on an integrated circuit chip.",
         "image": "images/silk_chip.png"
       },
       {
         "id": "chip_algae",
         "title": "Algae Chip",
-        "description": "i like algae chips, yum",
+        "description": "More on algae chips (not the edible kind) here!",
         "image": "images/algae_chip.png"
       }
     ]

@@ -104,7 +104,7 @@ function scrollGifts() {
         {
           scrollTop: distFromTop,
         },
-        numGifts * 2000,
+        numGifts * 4000,
         "linear"
       );
     }
@@ -127,13 +127,13 @@ function addGift() {
     }
 
     // get player's name
-    let name = "Anonymous";
-    if ("name" in localStorage) {
-      name = localStorage.getItem("name");
+    let username = "Anonymous";
+    if ("username" in localStorage) {
+      username = localStorage.getItem("username");
     }
 
     // call express endpoint
-    const params = JSON.stringify({ name: name, gift: gift });
+    const params = JSON.stringify({ name: username, gift: gift });
     fetch("/add-gift", {
       method: "POST",
       body: params,
@@ -190,7 +190,7 @@ function showGiftInput() {
 // Logic for Finish Game button on Garden page
 function setFinishGame() {
   $("#finish-game-btn").on("click", function () {
-    window.location.replace("/final");
+    window.location.replace("/action");
   });
   const gaveGift = localStorage.getItem("gave-gift");
   $("#finish-game-btn").attr("hidden", !gaveGift);
