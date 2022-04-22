@@ -10,7 +10,7 @@
       {
         "id": "chip_silk",
         "title": "Silk Chip",
-        "description": "Hwang et al. showed that silk (water-soluble, biodegradable) as substrate combined with other inorganic semiconductors can be used to build devices.",
+        "description": "Silk, which shares many of the same properties as spider silk, can act as glass fiber optic cables that carry information for electronic devices. Silk is both a water-soluble and biodegradable: when combined with other inorganic semiconductors, the substrate can be used to build devices.",
         "image": "images/silk_chip.png"
       },
       {
@@ -25,7 +25,7 @@
     "items": [
       {
         "title": "Plant Sensor",
-        "description": "It's a plant.",
+        "description": "A plant, as a sensor!",
         "image": "images/plant_sensor.png"
       }
     ]
