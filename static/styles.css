@@ -188,24 +188,29 @@ body {
   width: 160px;
 }
 
-/* ACTION PAGE */
-#action-container {
-  padding-top: 50px;
-  padding-bottom: 50px;
-  text-align: center;
+/* ACTION/ABOUT PAGE */
+.outer-container {
   height: 100%;
   overflow: auto;
 }
 
-#action-text {
+.text-container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+}
+
+.text-block {
   background-color: rgb(255 255 255 / 0.6);
   padding: 50px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   border-radius: 5px;
   margin-left: 10%;
   margin-right: 10%;
 }
 
-#action-text strong {
+.text-block strong {
   font-weight: 600;
 }
 
