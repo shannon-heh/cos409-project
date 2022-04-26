@@ -283,12 +283,19 @@ function setWorkshopButtons() {
   });
 }
 
-// Clear player's cart on reload or closing of page
-function clearCartOnUnload() {
-  window.addEventListener("beforeunload", function (e) {
-    delete e["returnValue"];
-    localStorage.setItem("cart", JSON.stringify({}));
+// Show items in cart on action page
+function showYourItems() {
+  const cart = getCart();
+  $(`.your-items .item-cart-container`).each(function () {
+    const category = $(this).attr("data-category");
+    const item = $(this).attr("data-item");
+    $(this).attr("hidden", !(category in cart) || cart[category] !== item);
   });
+}
+
+// Clear player's cart on load of workshop page
+function clearCartOnLoad() {
+  localStorage.setItem("cart", JSON.stringify({}));
 }
 
 $(function () {
@@ -300,11 +307,11 @@ $(function () {
   }
   if ($("body").hasClass("workshop")) {
     // Workshop page
+    clearCartOnLoad();
     showCategory();
     showItem();
     chooseItem();
     setWorkshopButtons();
-    clearCartOnUnload();
     if (!gaveGift()) $("#workshop-intro").modal("show");
   }
   if ($("body").hasClass("garden")) {
@@ -315,6 +322,10 @@ $(function () {
     setFinishGame();
     showGiftInput();
     if (!gaveGift()) $("#garden-intro").modal("show");
+  }
+  if ($("body").hasClass("action")) {
+    // Action page
+    showYourItems();
   }
 });
 

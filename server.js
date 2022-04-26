@@ -14,6 +14,8 @@ app.use(express.static("static"));
 app.use(express.static("static/images"));
 app.use(express.json());
 
+const allItems = JSON.parse(fs.readFileSync("all-items.json", "utf8"));
+
 // Home page
 app.get("/", async (req, res) => {
   res.render("index");
@@ -22,7 +24,6 @@ app.get("/", async (req, res) => {
 // Workshop page
 app.get("/workshop", async (req, res) => {
   // all items are stored in JSON file
-  const allItems = JSON.parse(fs.readFileSync("all-items.json", "utf8"));
   res.render("workshop", { allItems: allItems });
 });
 
@@ -45,7 +46,7 @@ app.get("/garden", async (req, res) => {
 
 // Final page
 app.get("/action", async (req, res) => {
-  res.render("action");
+  res.render("action", { allItems: allItems });
 });
 
 // About page

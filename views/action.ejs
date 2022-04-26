@@ -4,6 +4,27 @@
   <body class="action">
     <div class="outer-container">
       <div class="text-container">
+        <h1 style="color: white">Your Collection</h1>
+        <div
+          class="text-block your-items"
+        >
+          <% for (category in allItems) { %> <%
+          allItems[category].items.forEach(function(item, i) { %>
+
+          <div class="item-cart-container" data-category="<%=category%>"" data-item="<%=item.title%>">
+            <img height="200" src="<%= item.image %>" />
+            <div class="item-cart-text" data-item="<%=item.title%>">
+              <div class="item-cart-title">
+                <strong><%= item.title %></strong>
+              </div>
+              <div class="item-cart-desc"><%= item.description %></div>
+            </div>
+          </div>
+
+          <% }); %> <% } %>
+        </div>
+      </div>
+      <div class="text-container" style="padding-top: 0px">
         <h1 style="color: white; margin-bottom: 15px">Take Action!</h1>
         <div class="text-block">
           <div>
