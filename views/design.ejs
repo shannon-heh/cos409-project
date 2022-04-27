@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <%- include('partials/head'); %>
+  <body class="design">
+    <div class="outer-container">
+      <div class="text-container">
+        <h1 style="color: white; margin-bottom: 15px">The Design Workshop</h1>
+        <div
+          class="text-block"
+          style="padding-bottom: 0px; padding-left: 15%; padding-right: 15%"
+        >
+          <div>
+            On April 22nd, 2022, we held a mini design workshop with 17 peers,
+            during our SOC/COS409 class time. This workshop was situated
+            outdoors in a garden space, to help our participants feel more
+            connected with nature as they engaged in the a world-building
+            exercise about plant computing. Specifically, we asked them
+            free-write, free-draw in response to this prompt:
+          </div>
+          <br />
+          <div style="font-style: italic">
+            Imagine a computer in your head. Think of all of its parts, and then
+            completely take it apart. Think about the materials. Do you want the
+            computer to be made out of food? Bubbles? Maybe you use plant DNA
+            for the data storage in a hard drive. Try to meld the "living" and
+            the "non-living". How can you incorporate more sustainable or
+            natural materials? Think about how you would interact with it. What
+            capabilities does your computer have? What scale, shape is your
+            computer? Does it grow? What does it feel like on your hands, or
+            your toes, or your... elbows?
+          </div>
+          <br />
+          <div>
+            The workshop was intended to simulate a real-life version of our
+            "Garden". They ideated on small index cards, then placed their cards
+            onto a central table for their peers to read and "receive as gifts".
+            The participants enjoyed passing the cards around, taking in their
+            peers' creative ideas, and reflecting in a class-wide discussion
+            about the most interesting, thought-provoking designs.
+          </div>
+          <br />
+          <div>
+            <strong
+              >The following gallery showcases the participants' design
+              ideas:</strong
+            >
+          </div>
+        </div>
+        <div class="text-block" style="padding-top: 15px">
+          <% for(let i=1; i<=28; i++) {%> <% if (i % 3 == 1) {%>
+          <div class="row">
+            <% } %>
+            <div class="col my-3">
+              <img height="220" src="images/cards/card<%=i%>.png" />
+            </div>
+            <% if (i % 3 == 0) {%>
+          </div>
+          <% } %> <% } %>
+          <div class="row"></div>
+        </div>
+      </div>
+    </div>
+    <%- include('partials/scripts'); %>
+  </body>
+</html>

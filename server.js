@@ -54,6 +54,11 @@ app.get("/about", async (req, res) => {
   res.render("about");
 });
 
+// Design Workshop page
+app.get("/design", async (req, res) => {
+  res.render("design");
+});
+
 // Adds gift to DB
 app.post("/add-gift", async (req, res) => {
   const { name, gift } = req.body;

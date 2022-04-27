@@ -252,7 +252,8 @@ body.garden {
 
 body.home,
 body.action,
-body.about {
+body.about,
+body.design {
   background: url("Welcome.png") no-repeat center center fixed;
 }
 
