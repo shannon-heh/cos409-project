@@ -8,11 +8,18 @@
 
 ### Public endpoints
 
-- `/`: Home page (where player enters name & starts)
-- `/workshop`: Workshop page (for dress-up game)
-- `/garden`: Garden page (displays gift stream)
-- `/action`: Final page (after player finishes game)
-- `/about`: About page
+- `/`: Home page
+  - Where the player starts by entering an alias
+- `/workshop`: Workshop page 
+  - Laid out as a virtual workshop, invites players to learn about sustainable materials for computer parts and drag & drop these materials to their worktable and "collect them"
+- `/garden`: Garden page 
+  - Displays "gifts" from other players and asks player to give their own "gift", i.e. a reimaginign of the computer into something more sustainable
+- `/action`: Take Action page 
+  - Shows collected materials and a list of actionable items for the player to carry forward after they finish the game
+- `/about`: About page 
+  - Introduces team members and the philosophy behind our game 
+- `/design`: Design Workshop page 
+  -  A description and gallery of results from our in-class Design Workshop
 
 ### Development process
 
