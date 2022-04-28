@@ -9,7 +9,7 @@
 ### Public endpoints
 
 - `/`: Home page
-  - Where the player starts by entering an alias
+  - Where the player begins the game by entering an alias
 - `/workshop`: Workshop page 
   - Laid out as a virtual workshop, invites players to learn about sustainable materials for computer parts and drag & drop these materials to their worktable and "collect them"
 - `/garden`: Garden page 
@@ -18,8 +18,8 @@
   - Shows collected materials and a list of actionable items for the player to carry forward after they finish the game
 - `/about`: About page 
   - Introduces team members and the philosophy behind our game 
-- `/design`: Design Workshop page 
-  -  A description and gallery of results from our in-class Design Workshop
+- `/design`: Idea Gallery page 
+  -  A description and gallery of our peers' creative ideas from our in-class Design Workshop
 
 ### Development process
 
