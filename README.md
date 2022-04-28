@@ -1,8 +1,10 @@
 # SOC / COS 409 Final Project
 
-## Title: TBD
+### Title: Cy-Botanics
+### Site: https://cos409-project.herokuapp.com/
 
-## Authors: Shannon, Lydia, Aleeza, Wendi
+### Team Members 
+* Shannon (dev), Lydia (dev), Wendi, Aleeza
 
 ### Public endpoints
 
