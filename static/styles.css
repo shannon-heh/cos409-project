@@ -118,7 +118,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 150px;
+  min-width: 200px;
 }
 
 .modal-container {
@@ -129,6 +129,10 @@ body {
 .item-modal-container {
   display: flex;
   flex-direction: row;
+}
+
+.item-image {
+  max-width: 100%;
 }
 
 #workshop-table {
