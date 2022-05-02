@@ -21,7 +21,7 @@
       }
     ]
   },
-  "Plant Computers": {
+  "Plant Devices": {
     "items": [
       {
         "title": "Plant Sensor",
@@ -37,6 +37,38 @@
         "title": "Algae Battery",
         "description": "Batteries, but make it green. Algae has the potential to be used as bio-batteries. It works similarly to solar cells by capturing sunlight, stores it, and converting it to electric current.",
         "image": "images/algae_battery.png"
+      }
+    ]
+  },
+  "Circuits": {
+    "items": [
+      {
+        "title": "Mycelium Computing",
+        "description": "",
+        "image": "images/mycelium_computing.png"
+      },
+      {
+        "title": "Slime Circuit",
+        "description": "",
+        "image": "images/slime_circuit.png"
+      }
+    ]
+  },
+  "Data Storage": {
+    "items": [
+      {
+        "title": "DNA Data Storage",
+        "description": "",
+        "image": "images/dna_data_storage.png"
+      }
+    ]
+  },
+  "Accessories": {
+    "items": [
+      {
+        "title": "Bamboo Keyboard",
+        "description": "",
+        "image": "images/biodegradable_keyboard.png"
       }
     ]
   }
