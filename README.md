@@ -1,7 +1,7 @@
 # SOC / COS 409 Final Project
 
 ### Title: Cy-Botanics
-### Site: https://cos409-project.herokuapp.com/
+### Site: https://cy-botanics.herokuapp.com/
 
 ### Team Members 
 * Shannon (dev), Lydia (dev), Wendi, Aleeza
