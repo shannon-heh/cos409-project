@@ -25,7 +25,7 @@
     "items": [
       {
         "title": "Plant Sensor",
-        "description": "A plant, as a sensor!",
+        "description": "A plant, as a sensor! Plants have vast potential to act as information systems through their innate and accurate sensing and communication networks.",
         "image": "images/plant_sensor.png"
       }
     ]
@@ -44,7 +44,7 @@
     "items": [
       {
         "title": "Mycelium Computing",
-        "description": "",
+        "description": "Fungus is cool, duh. The network of fine filaments provide for a rife ground to imagine computing circuits using fungus structures.",
         "image": "images/mycelium_computing.png"
       },
       {
@@ -58,7 +58,7 @@
     "items": [
       {
         "title": "DNA Data Storage",
-        "description": "",
+        "description": "Human hard drives, anyone? The 'code' of DNA can be used to store bits of data, and its highly stable and space efficiency makes it a viable storage alternative.",
         "image": "images/dna_data_storage.png"
       }
     ]
@@ -67,7 +67,7 @@
     "items": [
       {
         "title": "Bamboo Keyboard",
-        "description": "",
+        "description": "Tough, sturdy, and light. Bamboo's versatile nature and durability make it perfect for hard-hitting fingers.",
         "image": "images/biodegradable_keyboard.png"
       }
     ]
