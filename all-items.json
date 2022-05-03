@@ -16,7 +16,7 @@
       {
         "id": "chip_algae",
         "title": "Algae Chip",
-        "description": "More on algae chips (not the edible kind) here!",
+        "description": "Not edible, but pretty cool anyway. Algae has potential to be harnessed for directing and storing electrical current.",
         "image": "images/algae_chip.png"
       }
     ]
@@ -49,7 +49,7 @@
       },
       {
         "title": "Slime Circuit",
-        "description": "",
+        "description": "Slime mold has been shown to be able to be incorporated into computer circuitry. They are able to act as ‘memristors’ - that is, resistors that are able to ‘remember’ specific charges even after electric flow is turned off, allowing for more efficient computer memory.",
         "image": "images/slime_circuit.png"
       }
     ]
