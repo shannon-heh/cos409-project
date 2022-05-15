@@ -1,6 +1,6 @@
-# SOC / COS 409 Final Project
+# Cy-Botanics
 
-### Title: Cy-Botanics
+### For Princeton's [SOC / COS 409](https://registrar.princeton.edu/course-offerings/course-details?term=1224&courseid=011914) course (Spring '22)
 ### Site: https://cy-botanics.herokuapp.com/
 ### Article: [Cy-Botanics Lab: Speculations on Plant Computers](https://drive.google.com/file/d/12KkYvpt2A0gsIpPlsWflJ_26cE0Q9AFk/view?usp=sharing)
 ### Documentation Write-up: ["Cy-Botanics" Game](https://drive.google.com/file/d/12NpLaJ5ERl6Pkj1OSJeXC8VFpEpuXXeI/view?usp=sharing)
