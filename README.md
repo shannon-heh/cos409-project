@@ -7,7 +7,7 @@
 #### Documentation Write-up: ["Cy-Botanics" Game](https://drive.google.com/file/d/12NpLaJ5ERl6Pkj1OSJeXC8VFpEpuXXeI/view?usp=sharing)
 
 #### Team Members 
-* Shannon (dev), Lydia (dev), Wendi, Aleeza
+* Shannon Heh '23 (dev), Lydia You '23 (dev), Wendi Yan '23, Aleeza Schoenberg '22
 
 ### Public endpoints
 
